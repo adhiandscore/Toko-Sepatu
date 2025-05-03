@@ -9,6 +9,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 use App\Models\Category;
 use App\Models\Brand;
+use App\Models\ShoePhoto;
+use App\Models\ShoeSize;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 
 class Shoe extends Model
 {
@@ -32,6 +36,15 @@ class Shoe extends Model
     public function brand():belongsTo{
         return $this->belongsTo(Brand::class, 'brand_id');
     }
+
+    public function shoePhotos():hasMany{
+        return $this->hasMany(ShoePhoto::class);
+    }
+
+    public function shoeSizes():hasMany{
+        return $this->hasMany(ShoeSize::class);
+    }
+
     public function setNameAttribute($value) 
     {
         $this->attributes['name'] = $value;
