@@ -17,7 +17,7 @@ class ShoePhoto extends Model
     ];
     public function shoe():belongsTo
     {
-        return $this->belongsTo(Shoe::class);
+        return $this->belongsTo(Shoe::class, 'shoe_id');
     }
     public function setImageAttribute($value)
     {

@@ -29,12 +29,22 @@ class ProductTransaction extends Model
         'discount_amount',
     ];
 
+    public static function generateUniqueBookingTrxId()
+    {
+        $prefix = 'SS';
+        do {
+            $randomString = $prefix.mt_rand(10000, 99999);
+
+        } while (self::where('booking_trx_id', $randomString) ->exists());
+
+        return $randomString;
+    }
     public function promoCode()
     {
-        return $this->belongsTo(PromoCode::class);
+        return $this->belongsTo(PromoCode::class, 'promo_code_id');
     }
     public function shoe()
     {
-        return $this->belongsTo(Shoe::class);
+        return $this->belongsTo(Shoe::class, 'shoe_id');
     }
 }
