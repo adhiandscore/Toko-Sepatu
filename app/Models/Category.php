@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Str;
 use App\Models\Shoe;
 
-class Brand extends Model
+class Category extends Model
 {
     use HasFactory, SoftDeletes;
     protected $fillable = [
